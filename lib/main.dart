@@ -31,7 +31,7 @@ class RipeNGoApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: StartScreen(), // Set MainScreen as the home
+      home: MainScreen(), // Set MainScreen as the home
     );
   }
 }

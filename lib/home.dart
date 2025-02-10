@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HeaderSection(),
-                RecentSection(),
+                HomeBody(),
               ],
             ),
           ),
@@ -125,14 +125,14 @@ class HeaderSection extends StatelessWidget {
 }
 
 
-class RecentSection extends StatefulWidget {
-  const RecentSection({super.key});
+class HomeBody extends StatefulWidget {
+  const HomeBody({super.key});
 
   @override
-  _RecentSectionState createState() => _RecentSectionState();
+  _HomeBodyState createState() => _HomeBodyState();
 }
 
-class _RecentSectionState extends State<RecentSection> {
+class _HomeBodyState extends State<HomeBody> {
   List<XFile?> selectedImages = [];
   final ImagePicker picker = ImagePicker();
 

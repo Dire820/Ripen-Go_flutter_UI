@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'home.dart';
-import 'start.dart';
+import 'auth.dart';
 
 void main() {
   runApp(RipeNGoApp());

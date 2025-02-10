@@ -1,12 +1,9 @@
-
 import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-
-import 'bottomnavbar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,10 +12,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFFFBE6),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF347928),
-        title: Text("", style: TextStyle(fontWeight: FontWeight.bold)),
-        centerTitle: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.0), // Set the height of the AppBar
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: const Color(0xFF347928),
+          centerTitle: true,
+        ),
       ),
       body: Stack(
         children: [
@@ -33,31 +33,6 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(),
-      floatingActionButton: SizedBox(
-        width: 70,
-        height: 70,
-        child: FloatingActionButton(
-          onPressed: () {},
-          elevation: 10.0,
-          shape: CircleBorder(),
-          child: Container(
-            decoration: BoxDecoration(
-              // border: Border.all(color: Colors.black, width: 2),
-              shape: BoxShape.circle,
-              gradient: LinearGradient(
-                colors: [Color(0xFFFCCD2A), Color(0xFF9D7E10)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
-            child: Center(
-              child: Image.asset("assets/scanner_icon.png", width: 40, height: 40),
-            ),
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
@@ -124,7 +99,6 @@ class HeaderSection extends StatelessWidget {
   }
 }
 
-
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
 
@@ -150,12 +124,14 @@ class _HomeBodyState extends State<HomeBody> {
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, // Align children to the left
         children: [
           selectedImages.isEmpty
               ? Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      SizedBox(height: 20),
                       Icon(
                         Icons.add_photo_alternate_outlined,
                         color:Color(0xFF347928),
@@ -177,24 +153,38 @@ class _HomeBodyState extends State<HomeBody> {
                     ],
                   ),
                 )
-              : GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 8,
-                    mainAxisSpacing: 8,
-                  ),
-                  itemCount: selectedImages.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Color(0xFF347928)),
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start, // Align children to the left
+                  children: [
+                    Text(
+                      "Recent",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54,
                       ),
-                      child: Image.file(File(selectedImages[index]!.path), fit: BoxFit.cover),
-                    );
-                  },
+                    ),
+                    SizedBox(height: 10),
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 8,
+                        mainAxisSpacing: 8,
+                      ),
+                      itemCount: selectedImages.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Color(0xFF347928)),
+                          ),
+                          child: Image.file(File(selectedImages[index]!.path), fit: BoxFit.cover),
+                        );
+                      },
+                    ),
+                  ],
                 ),
         ],
       ),

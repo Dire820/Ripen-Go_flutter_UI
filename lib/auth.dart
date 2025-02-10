@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
-
+import 'main.dart';
 
 class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xFFFFFBE6),
+      backgroundColor: const Color(0xFFFFFBE6),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -29,42 +28,40 @@ class StartScreen extends StatelessWidget {
             SizedBox(height: 30),
             SizedBox(
               width: 275,
-              child: 
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 12),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                    side: BorderSide(color: Color(0xFF347928)),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-                  },
-                  child: Text("Sign In", style: TextStyle(color: Color(0xFF347928))),
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 12),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  side: BorderSide(color: Color(0xFF347928)),
                 ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                },
+                child: Text("Sign In", style: TextStyle(color: Color(0xFF347928))),
+              ),
             ),
             SizedBox(
               width: 275,
-              child: 
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 12),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                    side: BorderSide(color: Color(0xFF347928)),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignupScreen()));
-                  },
-                  child: Text("Create account", style: TextStyle(color: Color(0xFF347928))),
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 12),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  side: BorderSide(color: Color(0xFF347928)),
                 ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignupScreen()));
+                },
+                child: Text("Create account", style: TextStyle(color: Color(0xFF347928))),
+              ),
             ),
             SizedBox(height: 10),
-            
           ],
         ),
       ),
     );
   }
 }
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -98,11 +95,19 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: "Your email or phone number", )),
+                hintText: "Your email or phone number",
+              ),
+            ),
             SizedBox(height: 10),
             Text("Password"),
-            TextField(obscureText: true, decoration: InputDecoration( 
-              hintText: "Password", border: OutlineInputBorder(), suffixIcon: Icon(Icons.visibility_off))),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                hintText: "Password",
+                border: OutlineInputBorder(),
+                suffixIcon: Icon(Icons.visibility_off),
+              ),
+            ),
             SizedBox(height: 10),
             Row(
               children: [
@@ -127,8 +132,14 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Color(0xFFFCCD2A), padding: EdgeInsets.symmetric(vertical: 15), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFFCCD2A),
+                padding: EdgeInsets.symmetric(vertical: 15),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+              onPressed: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
+              },
               child: Center(child: Text("Log in", style: TextStyle(color: Color(0xFF347928), fontSize: 18))),
             ),
             SizedBox(height: 10),
@@ -204,11 +215,11 @@ class _SignupScreenState extends State<SignupScreen> {
           children: [
             Text("Create Account", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF347928))),
             SizedBox(height: 20),
-            TextField(decoration: InputDecoration( labelText: "Full Name"),),
-            TextField(decoration: InputDecoration( labelText: "Email")),
-            TextField(decoration: InputDecoration( labelText: "Mobile Number")),
-            TextField(obscureText: true, decoration: InputDecoration( labelText: "Password", suffixIcon: Icon(Icons.visibility_off))),
-            TextField(obscureText: true, decoration: InputDecoration( labelText: "Confirm Password", suffixIcon: Icon(Icons.visibility_off))),
+            TextField(decoration: InputDecoration(labelText: "Full Name")),
+            TextField(decoration: InputDecoration(labelText: "Email")),
+            TextField(decoration: InputDecoration(labelText: "Mobile Number")),
+            TextField(obscureText: true, decoration: InputDecoration(labelText: "Password", suffixIcon: Icon(Icons.visibility_off))),
+            TextField(obscureText: true, decoration: InputDecoration(labelText: "Confirm Password", suffixIcon: Icon(Icons.visibility_off))),
             Row(
               children: [
                 Checkbox(
@@ -224,7 +235,11 @@ class _SignupScreenState extends State<SignupScreen> {
               ],
             ),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Color(0xFFFCCD2A), padding: EdgeInsets.symmetric(vertical: 15), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFFCCD2A),
+                padding: EdgeInsets.symmetric(vertical: 15),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
               onPressed: () {},
               child: Center(child: Text("Sign Up", style: TextStyle(color: Color(0xFF347928), fontSize: 18, fontWeight: FontWeight.bold))),
             ),
@@ -297,7 +312,6 @@ class ForgotPasswordScreen extends StatelessWidget {
             SizedBox(height: 20),
             TextField(
               decoration: InputDecoration(
-                 
                 labelText: "Enter your email address or number",
                 border: OutlineInputBorder(),
               ),

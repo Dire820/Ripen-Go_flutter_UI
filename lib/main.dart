@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:navbar/home.dart';
-import 'package:navbar/start.dart';
+import 'home.dart';
+import 'start.dart';
 
 void main() {
   runApp(RipeNGoApp());
@@ -27,7 +27,7 @@ class RipeNGoApp extends StatelessWidget {
           ),
         ),
       debugShowCheckedModeBanner: false,
-      home: StartScreen(),
+      home: HomePage(),
     );
   }
 }

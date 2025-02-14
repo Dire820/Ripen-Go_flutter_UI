@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                HeaderSection(),
+                HomeHeaderSection(),
                 HomeBody(),
               ],
             ),
@@ -37,8 +37,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class HeaderSection extends StatelessWidget {
-  const HeaderSection({super.key});
+class HomeHeaderSection extends StatelessWidget {
+  const HomeHeaderSection({super.key});
 
   @override
   Widget build(BuildContext context) {
